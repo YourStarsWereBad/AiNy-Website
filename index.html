@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiNy - Your AI Life Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .chat-bubble-bounce {
+            animation: bounce-gentle 3s infinite;
+        }
+        @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-200">A</div>
+                <span class="text-2xl font-bold tracking-tight">AiNy</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+                <a href="#features" class="hover:text-indigo-600 transition-colors">Features</a>
+                <a href="#thai-language" class="hover:text-indigo-600 transition-colors">Thai NLP</a>
+                <a href="#integrations" class="hover:text-indigo-600 transition-colors">Services</a>
+            </div>
+            <button class="bg-indigo-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-indigo-700 transition-all shadow-md">
+                Download App
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-6 hero-gradient relative overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+            <div class="flex-1 text-center lg:text-left">
+                <div class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-indigo-700 bg-indigo-50 rounded-full">
+                    The First AI Super-App for Thai People
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                    Meet <span class="gradient-text">AiNy</span>,<br>Your AI Life Companion
+                </h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-xl mx-auto lg:mx-0">
+                    The comprehensive AI-powered super-app designed specifically for the Thai lifestyle. From predictive intelligence to local service integration, AiNy understands you like no other.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-slate-800 transition-all">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 12c0 2.5-2 4.5-4.5 4.5s-4.5-2-4.5-4.5 2-4.5 4.5-4.5 4.5 2 4.5 4.5zm5.5 0c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10zm-2 0c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8 8-3.6 8-8z"/></svg>
+                        App Store
+                    </button>
+                    <button class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-slate-800 transition-all">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M3 20.5v-17l14 8.5-14 8.5z"/></svg>
+                        Google Play
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 relative">
+                <div class="relative z-10 w-64 lg:w-80 mx-auto rounded-[3rem] border-[12px] border-slate-900 shadow-2xl overflow-hidden aspect-[9/19] bg-white">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-bold text-slate-400">9:41</span>
+                            <div class="flex space-x-1">
+                                <div class="w-4 h-4 rounded-full bg-slate-200"></div>
+                                <div class="w-4 h-4 rounded-full bg-slate-200"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="h-8 bg-indigo-50 rounded-lg w-3/4"></div>
+                            <div class="h-32 bg-slate-100 rounded-2xl"></div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="h-20 bg-pink-50 rounded-2xl"></div>
+                                <div class="h-20 bg-purple-50 rounded-2xl"></div>
+                            </div>
+                            <div class="h-40 bg-indigo-600 rounded-3xl p-4 flex flex-col justify-end">
+                                <div class="text-white text-xs opacity-80">AI Suggestion</div>
+                                <div class="text-white font-bold">Rain expected in Sukhumvit. Carry an umbrella!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating Decorative Elements -->
+                <div class="absolute top-1/2 -translate-y-1/2 -right-4 w-48 h-48 bg-indigo-400/20 blur-3xl rounded-full"></div>
+                <div class="absolute bottom-0 -left-10 w-48 h-48 bg-pink-400/20 blur-3xl rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Core Features -->
+    <section id="features" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Intelligent in Every Aspect</h2>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">AiNy uses cutting-edge neural networks to harmonize your digital life with your physical reality.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Predictive Intelligence -->
+                <div class="feature-card p-8 rounded-3xl bg-indigo-50 border border-indigo-100">
+                    <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Predictive Intelligence</h3>
+                    <p class="text-slate-600 leading-relaxed">Anticipates your needs before you express them. AiNy learns your patterns to provide proactive context-aware recommendations.</p>
+                </div>
+
+                <!-- Content Curation -->
+                <div class="feature-card p-8 rounded-3xl bg-pink-50 border border-pink-100">
+                    <div class="w-14 h-14 bg-pink-600 rounded-2xl flex items-center justify-center text-white mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Personalized Curation</h3>
+                    <p class="text-slate-600 leading-relaxed">Tailored news feeds and smart entertainment recommendations based on your mood, time of day, and Thai content preferences.</p>
+                </div>
+
+                <!-- Life Management -->
+                <div class="feature-card p-8 rounded-3xl bg-purple-50 border border-purple-100">
+                    <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center text-white mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Smart Management</h3>
+                    <p class="text-slate-600 leading-relaxed">Automated task prioritization and calendar optimization that integrates seamlessly with your favorite local service platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thai Language Highlight -->
+    <section id="thai-language" class="py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex-1">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8 leading-tight">Thai Language Excellence<br><span class="text-indigo-400">เข้าใจคนไทย มากกว่าใคร</span></h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center">✓</div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Advanced Thai NLP</h4>
+                            <p class="text-slate-400">Deep understanding of Thai nuances, particles (khrap/ka), and slang.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center">✓</div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Dialect Support</h4>
+                            <p class="text-slate-400">Fluent support for Northern, Isan, and Southern dialects with local context.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center">✓</div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Seamless Code-Switching</h4>
+                            <p class="text-slate-400">Fluently switch between Thai and English mid-sentence just like you do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 w-full">
+                <div class="bg-slate-800 p-8 rounded-[2.5rem] border border-slate-700 shadow-2xl">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center font-bold">A</div>
+                        <div class="text-sm">
+                            <div class="font-bold">AiNy Assistant</div>
+                            <div class="text-slate-400">Active now</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-slate-700/50 p-4 rounded-2xl rounded-bl-none max-w-[80%]">
+                            สวัสดีค่ะ! เที่ยงนี้อยากสั่งส้มตำร้านเดิมไหมคะ? อากาศร้อนๆ แบบนี้ AiNy แนะนำน้ำลำไยเย็นๆ เพิ่มด้วยนะ
+                        </div>
+                        <div class="bg-indigo-600 p-4 rounded-2xl rounded-br-none max-w-[80%] ml-auto text-white">
+                            เอาเลยครับ สั่งส้มตำปูปลาร้าเผ็ดน้อย แล้วฝาก check schedule บ่ายนี้ด้วยว่า busy ไหม
+                        </div>
+                        <div class="bg-slate-700/50 p-4 rounded-2xl rounded-bl-none max-w-[80%]">
+                            Got it! สั่งเรียบร้อยแล้วค่ะ ช่วงบ่ายคุณมีประชุมตอน 14:00 แต่อาจจะเลทหน่อยเพราะการจราจรติดขัดนะคะ เดี๋ยว AiNy จัดการเลื่อนเวลาให้นะคะ
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Integrations -->
+    <section id="integrations" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">The Thai Ecosystem in Your Pocket</h2>
+                <p class="text-slate-500 text-lg">AiNy connects you to every essential Thai service, making your day frictionless.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <div class="font-bold">Food & Dining</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="font-bold">Payments</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-green-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <div class="font-bold">Healthcare</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-red-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div class="font-bold">Transportation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-16 px-6 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="flex items-center space-x-2 mb-6">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">A</div>
+                    <span class="text-2xl font-bold tracking-tight">AiNy</span>
+                </div>
+                <p class="text-slate-500 max-w-sm">Elevating the lives of Thai consumers through intelligent technology and local empathy.</p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-4">Product</h5>
+                <ul class="space-y-2 text-slate-500">
+                    <li><a href="#" class="hover:text-indigo-600">Download</a></li>
+                    <li><a href="#" class="hover:text-indigo-600">Integration</a></li>
+                    <li><a href="#" class="hover:text-indigo-600">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-4">Company</h5>
+                <ul class="space-y-2 text-slate-500">
+                    <li><a href="#" class="hover:text-indigo-600">About Us</a></li>
+                    <li><a href="#" class="hover:text-indigo-600">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-indigo-600">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-50 text-center text-slate-400 text-sm">
+            &copy; 2024 AiNy Technologies Co., Ltd. All rights reserved. Built for Thailand.
+        </div>
+    </footer>
+
+    <!-- Floating Chat Bubble -->
+    <div class="fixed bottom-6 right-6 z-[100] group">
+        <div class="absolute bottom-full right-0 mb-4 w-64 bg-white rounded-2xl shadow-2xl p-4 border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto">
+            <p class="text-sm font-semibold mb-1">Talk to AiNy 👋</p>
+            <p class="text-xs text-slate-500">How can I help you optimize your schedule today?</p>
+        </div>
+        <button class="chat-bubble-bounce w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-xl shadow-indigo-200 hover:scale-110 transition-transform cursor-pointer border-4 border-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Simple scroll animation observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
