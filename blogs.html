@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiNy Blog — Insights on the Future of Smart Living</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #f97316;
+            --purple: #9333ea;
+            --dark: #0f0f14;
+            --mid: #1a1a24;
+            --card: #1e1e2e;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', 'Noto Sans Thai', sans-serif;
+            background: var(--dark);
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+        }
+
+        /* Animated brand name */
+        .techy-text {
+            background: linear-gradient(to right, #ff8a00, #e52e71, #9333ea, #ff8a00);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* Editorial headline font */
+        .editorial { font-family: 'Playfair Display', Georgia, serif; }
+
+        /* Gradient accents */
+        .accent-line {
+            background: linear-gradient(90deg, var(--orange), var(--purple));
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* Glow blobs */
+        .blob-orange {
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            top: -200px; right: -200px;
+            z-index: 0;
+        }
+        .blob-purple {
+            position: fixed;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            bottom: -150px; left: -150px;
+            z-index: 0;
+        }
+
+        /* Hero blog card */
+        .hero-card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 2rem;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .hero-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(249,115,22,0.2);
+        }
+
+        /* Blog card */
+        .blog-card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            cursor: pointer;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(249,115,22,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(249,115,22,0.05);
+        }
+        .blog-card:hover .card-arrow { transform: translate(3px, -3px); }
+
+        /* Tag pill */
+        .tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .tag-orange { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(249,115,22,0.25); }
+        .tag-purple { background: rgba(147,51,234,0.15); color: #c084fc; border: 1px solid rgba(147,51,234,0.25); }
+        .tag-pink   { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.25); }
+
+        /* Article modal */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
+        .modal-box {
+            position: fixed;
+            inset: 0;
+            z-index: 1001;
+            overflow-y: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 2rem 1rem 4rem;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+        .modal-box.open {
+            pointer-events: all;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .modal-content {
+            background: #1a1a24;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 2rem;
+            max-width: 760px;
+            width: 100%;
+            padding: 3rem;
+            position: relative;
+        }
+        .modal-close {
+            position: sticky;
+            top: 1rem;
+            float: right;
+            width: 2.5rem; height: 2.5rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            transition: all 0.2s;
+            margin-bottom: 1.5rem;
+        }
+        .modal-close:hover { background: rgba(249,115,22,0.2); color: #fb923c; }
+
+        /* Article body typography */
+        .article-body { font-family: 'DM Sans', sans-serif; line-height: 1.85; color: #cbd5e1; }
+        .article-body h3 { font-family: 'Playfair Display', serif; color: #f1f5f9; font-size: 1.35rem; margin: 2rem 0 0.75rem; }
+        .article-body p { margin-bottom: 1.25rem; }
+        .article-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; list-style: none; }
+        .article-body ul li { padding: 0.35rem 0; position: relative; padding-left: 1.5rem; }
+        .article-body ul li::before { content: '→'; position: absolute; left: 0; color: #f97316; }
+        .article-body strong { color: #f1f5f9; font-weight: 600; }
+
+        /* Read progress bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, #f97316, #9333ea);
+            z-index: 9999; width: 0%; transition: width 0.1s;
+        }
+
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Decorative number */
+        .issue-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(249,115,22,0.15);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Nav link hover */
+        nav a { position: relative; }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 1px;
+            background: linear-gradient(90deg, #f97316, #9333ea);
+            transition: width 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+
+        @media (max-width: 768px) {
+            .modal-content { padding: 1.5rem; }
+            .issue-num { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div class="blob-orange"></div>
+<div class="blob-purple"></div>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="sticky top-0 z-50 bg-[#0f0f14]/90 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-orange-900/30">A</div>
+                <span class="text-3xl font-black tracking-tight techy-text">AiNy</span>
+            </a>
+            <span class="hidden sm:flex items-center gap-2 ml-4 text-slate-500 text-sm">
+                <span>/</span>
+                <span class="text-slate-300 font-medium">Blog</span>
+            </span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            <a href="index.html#services" class="hover:text-white transition-colors">Services</a>
+            <a href="index.html#pricing" class="hover:text-white transition-colors">Pricing</a>
+            <a href="blogs.html" class="text-orange-400">Blog</a>
+        </div>
+
+        <a href="index.html#download" class="bg-gradient-to-r from-orange-500 to-purple-600 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-orange-900/30">
+            Download AiNy
+        </a>
+    </div>
+</nav>
+
+<!-- ══ BLOG HEADER ══ -->
+<section class="relative z-10 pt-20 pb-12 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-4">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="accent-line w-12"></div>
+                    <span class="text-orange-400 text-sm font-semibold uppercase tracking-widest">AiNy Insights</span>
+                </div>
+                <h1 class="editorial text-5xl md:text-7xl font-black text-white leading-none">The<br><em class="italic text-transparent bg-clip-text" style="background: linear-gradient(135deg,#f97316,#9333ea); -webkit-background-clip:text;">Future</em><br>of Smart<br>Living.</h1>
+            </div>
+            <div class="md:text-right max-w-xs">
+                <p class="text-slate-400 leading-relaxed">Perspectives on AI, digital life, and the technology shaping Southeast Asia's tomorrow.</p>
+                <p class="text-slate-600 text-sm mt-3">Volume 01 · 2026</p>
+            </div>
+        </div>
+        <div class="accent-line w-full mt-10"></div>
+    </div>
+</section>
+
+<!-- ══ FEATURED / HERO BLOG ══ -->
+<section class="relative z-10 px-6 pb-12">
+    <div class="max-w-7xl mx-auto">
+        <div class="hero-card reveal" onclick="openModal(0)">
+            <div class="grid lg:grid-cols-2">
+                <!-- Visual side -->
+                <div class="relative h-72 lg:h-auto bg-gradient-to-br from-orange-900/30 via-[#1e1e2e] to-purple-900/30 overflow-hidden flex items-center justify-center p-12">
+                    <div class="issue-num absolute bottom-4 right-6 opacity-60">01</div>
+                    <!-- Decorative AI visual -->
+                    <div class="relative w-48 h-48">
+                        <div class="absolute inset-0 rounded-full border-2 border-orange-500/20 animate-[spin_20s_linear_infinite]"></div>
+                        <div class="absolute inset-4 rounded-full border border-purple-500/20 animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div class="absolute inset-8 rounded-full border border-orange-500/10 animate-[spin_10s_linear_infinite]"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-orange-900/50">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+                            </div>
+                        </div>
+                        <!-- Floating dots -->
+                        <div class="absolute top-2 left-1/2 w-2 h-2 bg-orange-400 rounded-full animate-[bounce_3s_infinite]"></div>
+                        <div class="absolute bottom-4 right-2 w-1.5 h-1.5 bg-purple-400 rounded-full animate-[bounce_4s_infinite_0.5s]"></div>
+                        <div class="absolute left-0 top-1/2 w-1.5 h-1.5 bg-pink-400 rounded-full animate-[bounce_3.5s_infinite_1s]"></div>
+                    </div>
+                </div>
+                <!-- Text side -->
+                <div class="p-8 lg:p-12 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="tag tag-orange">Featured</span>
+                            <span class="tag tag-purple">AI & Innovation</span>
+                        </div>
+                        <h2 class="editorial text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight group-hover:text-orange-300 transition-colors">
+                            Meet AiNy — Your Personal AI Companion for Everyday Life
+                        </h2>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            In today's digital world, we juggle multiple apps for messaging, payments, and shopping. AiNy was designed to solve this fragmentation — not just by combining services, but by making them intelligently adapt to you.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm">A</div>
+                            <div>
+                                <div class="text-white text-sm font-semibold">AiNy Team</div>
+                                <div class="text-slate-500 text-xs">Feb 2026 · 4 min read</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 text-orange-400 font-semibold text-sm group cursor-pointer">
+                            <span>Read article</span>
+                            <svg class="w-4 h-4 card-arrow transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ BLOG GRID ══ -->
+<section class="relative z-10 px-6 pb-24">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 mb-10">
+            <div class="accent-line w-8"></div>
+            <h2 class="editorial text-2xl font-bold text-white">More Stories</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card reveal reveal-delay-1" onclick="openModal(1)">
+                <!-- Visual header -->
+                <div class="relative h-48 bg-gradient-to-br from-purple-900/40 via-[#1e1e2e] to-pink-900/20 overflow-hidden flex items-center justify-center">
+                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">02</div>
+                    <div class="relative flex items-center gap-4">
+                        <!-- Integration icon grid -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="w-10 h-10 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center text-lg">💬</div>
+                            <div class="w-10 h-10 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center text-lg">💳</div>
+                            <div class="w-10 h-10 bg-pink-500/20 border border-pink-500/30 rounded-xl flex items-center justify-center text-lg">🛍️</div>
+                            <div class="w-10 h-10 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center text-lg">⚡</div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="h-0.5 w-8 bg-gradient-to-r from-orange-500 to-transparent rounded animate-[pulse_2s_infinite]"></div>
+                            <div class="h-0.5 w-6 bg-gradient-to-r from-purple-500 to-transparent rounded animate-[pulse_2.5s_infinite]"></div>
+                            <div class="h-0.5 w-8 bg-gradient-to-r from-pink-500 to-transparent rounded animate-[pulse_3s_infinite]"></div>
+                            <div class="h-0.5 w-5 bg-gradient-to-r from-blue-500 to-transparent rounded animate-[pulse_2s_infinite_0.5s]"></div>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-xl">A</div>
+                    </div>
+                </div>
+                <!-- Card body -->
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="tag tag-purple">Ecosystem</span>
+                        <span class="tag tag-pink">Product</span>
+                    </div>
+                    <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
+                        Seamless Service Integration — Everything You Need in One Place
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                        Digital fragmentation is one of the biggest frustrations users face today. AiNy eliminates this by creating one interconnected flow — where chat, payment, and shopping data work together.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">Feb 2026 · 5 min read</span>
+                        </div>
+                        <div class="card-arrow text-purple-400 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="blog-card reveal reveal-delay-2" onclick="openModal(2)">
+                <!-- Visual header -->
+                <div class="relative h-48 bg-gradient-to-br from-orange-900/30 via-[#1e1e2e] to-slate-900 overflow-hidden flex items-center justify-center">
+                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">03</div>
+                    <div class="relative flex items-center gap-6">
+                        <!-- Three pillars visual -->
+                        <div class="flex items-end gap-2">
+                            <div class="w-8 bg-gradient-to-t from-orange-500 to-orange-400 rounded-t-lg opacity-90" style="height:3rem"></div>
+                            <div class="w-8 bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-lg opacity-90" style="height:4.5rem"></div>
+                            <div class="w-8 bg-gradient-to-t from-pink-500 to-pink-400 rounded-t-lg opacity-90" style="height:3.5rem"></div>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs text-orange-400 font-semibold mb-1">🧠 Intelligence</div>
+                            <div class="text-xs text-purple-400 font-semibold mb-1">🔒 Security</div>
+                            <div class="text-xs text-pink-400 font-semibold">🇹🇭 Localization</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card body -->
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="tag tag-orange">Thailand</span>
+                        <span class="tag tag-pink">Security</span>
+                    </div>
+                    <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
+                        Smart, Secure, and Personalized — The Future of Digital Experience in Thailand
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                        Convenience alone is no longer enough. Thai digital users increasingly demand trust and personalization. AiNy's three core pillars — Intelligence, Security, and Localization — answer that call.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">Feb 2026 · 4 min read</span>
+                        </div>
+                        <div class="card-arrow text-orange-400 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ NEWSLETTER CTA STRIP ══ -->
+<section class="relative z-10 px-6 pb-20">
+    <div class="max-w-7xl mx-auto">
+        <div class="bg-gradient-to-r from-orange-500/10 to-purple-500/10 border border-white/8 rounded-3xl p-10 md:p-14 text-center reveal">
+            <div class="accent-line w-16 mx-auto mb-6"></div>
+            <h2 class="editorial text-3xl md:text-4xl font-bold text-white mb-4">Ready to Experience It Yourself?</h2>
+            <p class="text-slate-400 max-w-lg mx-auto mb-8">Stop reading about smarter living — start living it. Download AiNy free today.</p>
+            <a href="index.html#download" class="inline-block bg-gradient-to-r from-orange-500 to-purple-600 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:opacity-90 transition-all shadow-xl shadow-orange-900/30">
+                Download AiNy Now →
+            </a>
+            <div class="mt-6 flex flex-wrap justify-center gap-4 text-xs text-slate-500">
+                <span>✓ Free forever plan</span>
+                <span>✓ No credit card</span>
+                <span>✓ 10,000+ users</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="relative z-10 border-t border-white/5 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">A</div>
+            <span class="text-lg font-black tracking-tight techy-text">AiNy</span>
+        </div>
+        <p class="text-slate-600 text-sm">&copy; 2026 TechForward. All rights reserved.</p>
+        <div class="flex gap-6 text-sm text-slate-500">
+            <a href="index.html" class="hover:text-white transition-colors">Home</a>
+            <a href="index.html#pricing" class="hover:text-white transition-colors">Pricing</a>
+            <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ══ ARTICLE MODALS ══ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal()"></div>
+<div class="modal-box" id="modal-box">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- Article content data -->
+<script>
+const articles = [
+    {
+        tag1: 'Featured', tag1Class: 'tag-orange',
+        tag2: 'AI & Innovation', tag2Class: 'tag-purple',
+        title: 'Meet AiNy — Your Personal AI Companion for Everyday Life',
+        date: 'February 2026 · 4 min read',
+        content: `
+            <p>In today's digital world, we use multiple apps for messaging, payments, shopping, and services. Switching between platforms wastes time and creates unnecessary friction.</p>
+            <p><strong>AiNy was designed to solve this problem.</strong></p>
+            <p>Unlike traditional super apps, AiNy integrates advanced AI intelligence across every feature. Instead of simply offering services, AiNy learns from user behavior to create a personalized digital experience.</p>
+            <h3>AiNy's AI Companion Feature</h3>
+            <p>AiNy's AI Companion feature allows users to:</p>
+            <ul>
+                <li>Receive smart recommendations based on habits and preferences</li>
+                <li>Get reminders tailored to daily routines</li>
+                <li>Discover relevant promotions automatically</li>
+                <li>Simplify decision-making through intelligent suggestions</li>
+            </ul>
+            <p>For example, if you frequently order food after work, AiNy can recommend restaurants based on past preferences. If you regularly transfer money at certain times of the month, AiNy anticipates this and streamlines the process.</p>
+            <h3>More Than a Multi-Service Platform</h3>
+            <p>AiNy is not just another multi-service platform — it is a smart ecosystem that adapts to <em>you</em>. Our goal is simple: reduce digital noise and increase meaningful convenience.</p>
+            <p>We believe technology should work for you, not the other way around. Every interaction with AiNy is an opportunity for the system to learn, improve, and deliver greater value. The more you use it, the smarter it becomes.</p>
+        `
+    },
+    {
+        tag1: 'Ecosystem', tag1Class: 'tag-purple',
+        tag2: 'Product', tag2Class: 'tag-pink',
+        title: 'Seamless Service Integration — Everything You Need in One Place',
+        date: 'February 2026 · 5 min read',
+        content: `
+            <p>Digital fragmentation is one of the biggest frustrations users face today. Messaging in one app, payments in another, shopping somewhere else — the constant switching reduces efficiency and productivity.</p>
+            <p><strong>AiNy eliminates this fragmentation.</strong></p>
+            <h3>One Platform, All Services</h3>
+            <p>With AiNy's integrated ecosystem, users can:</p>
+            <ul>
+                <li>Message friends and businesses</li>
+                <li>Make secure digital payments</li>
+                <li>Shop for products</li>
+                <li>Access lifestyle services</li>
+                <li>Manage daily tasks</li>
+            </ul>
+            <p>All within a single platform.</p>
+            <h3>How the AI Connects Everything</h3>
+            <p>What makes AiNy different is not just the number of features, but how they work together. The AI system connects data across services to create smoother user journeys.</p>
+            <ul>
+                <li>A product discussed in chat can instantly appear in your shopping recommendations</li>
+                <li>A restaurant location shared in messages can link directly to booking or payment</li>
+                <li>Payment history can generate smart budgeting insights</li>
+            </ul>
+            <p>This interconnected experience improves convenience, speed, and overall satisfaction. AiNy transforms disconnected digital actions into one seamless flow.</p>
+        `
+    },
+    {
+        tag1: 'Thailand', tag1Class: 'tag-orange',
+        tag2: 'Security', tag2Class: 'tag-pink',
+        title: 'Smart, Secure, and Personalized — The Future of Digital Experience in Thailand',
+        date: 'February 2026 · 4 min read',
+        content: `
+            <p>As digital adoption grows in Thailand, users are becoming more selective. Convenience alone is no longer enough — trust and personalization are equally important.</p>
+            <p><strong>AiNy was built with three core pillars.</strong></p>
+            <h3>🧠 1. Intelligence</h3>
+            <p>Advanced AI personalization ensures that every user receives relevant recommendations and customized features. The more you use AiNy, the more it understands your preferences, routines, and needs — delivering a digital experience that feels genuinely personal.</p>
+            <h3>🔒 2. Security</h3>
+            <p>AiNy prioritizes encrypted transactions and data protection. User privacy is at the center of our platform. We use 256-bit SSL encryption, Two-Factor Authentication, and are fully PDPA compliant. Your data is never sold to third parties — ever.</p>
+            <h3>🇹🇭 3. Localization</h3>
+            <p>AiNy is designed specifically for Thai digital behavior and lifestyle patterns. From payment preferences to communication styles, every element reflects local user needs. Our advanced NLP understands Thai nuances, code-switching between Thai and English, and regional slang naturally.</p>
+            <h3>Building a Smarter Ecosystem</h3>
+            <p>By combining AI-driven personalization with strong security and local understanding, AiNy positions itself differently from traditional super apps.</p>
+            <p>We are not just integrating services. <strong>We are creating a smarter digital ecosystem built around you.</strong></p>
+        `
+    }
+];
+
+function openModal(index) {
+    const article = articles[index];
+    document.getElementById('modal-body').innerHTML = `
+        <div class="flex items-center gap-2 mb-6">
+            <span class="tag ${article.tag1Class}">${article.tag1}</span>
+            <span class="tag ${article.tag2Class}">${article.tag2}</span>
+        </div>
+        <h2 class="editorial text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">${article.title}</h2>
+        <div class="flex items-center gap-3 mb-8 pb-6 border-b border-white/10">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-orange-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm">A</div>
+            <div>
+                <div class="text-white text-sm font-semibold">AiNy Team</div>
+                <div class="text-slate-500 text-xs">${article.date}</div>
+            </div>
+        </div>
+        <div class="article-body">${article.content}</div>
+        <div class="mt-10 pt-6 border-t border-white/10 text-center">
+            <p class="text-slate-400 text-sm mb-4">Enjoyed this article? Experience AiNy yourself.</p>
+            <a href="index.html#download" class="inline-block bg-gradient-to-r from-orange-500 to-purple-600 text-white px-8 py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-all">Download AiNy Free →</a>
+        </div>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.getElementById('modal-box').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.getElementById('modal-box').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Reading progress bar (for modals)
+document.getElementById('modal-box').addEventListener('scroll', function() {
+    const el = this;
+    const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
