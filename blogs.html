@@ -348,46 +348,74 @@
             <h2 class="editorial text-2xl font-bold text-white">More Stories</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- Blog Card 2 -->
+            <!-- Blog Card 2 — Digital Overwhelm -->
             <div class="blog-card reveal reveal-delay-1" onclick="openModal(1)">
-                <!-- Visual header -->
-                <div class="relative h-48 bg-gradient-to-br from-purple-900/40 via-[#1e1e2e] to-pink-900/20 overflow-hidden flex items-center justify-center">
+                <div class="relative h-48 bg-gradient-to-br from-orange-900/40 via-[#1e1e2e] to-slate-900 overflow-hidden flex items-center justify-center">
                     <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">02</div>
-                    <div class="relative flex items-center gap-4">
-                        <!-- Integration icon grid -->
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="w-10 h-10 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center text-lg">💬</div>
-                            <div class="w-10 h-10 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center text-lg">💳</div>
-                            <div class="w-10 h-10 bg-pink-500/20 border border-pink-500/30 rounded-xl flex items-center justify-center text-lg">🛍️</div>
-                            <div class="w-10 h-10 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center text-lg">⚡</div>
+                    <div class="relative flex flex-col items-center gap-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-red-500/20 border border-red-500/30 rounded-lg flex items-center justify-center text-sm animate-[bounce_2s_infinite]">📱</div>
+                            <div class="w-8 h-8 bg-orange-500/20 border border-orange-500/30 rounded-lg flex items-center justify-center text-sm animate-[bounce_2.3s_infinite]">🔔</div>
+                            <div class="w-8 h-8 bg-yellow-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center text-sm animate-[bounce_2.6s_infinite]">💬</div>
+                            <div class="w-8 h-8 bg-blue-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center text-sm animate-[bounce_1.8s_infinite]">🛒</div>
                         </div>
-                        <div class="flex flex-col gap-1">
-                            <div class="h-0.5 w-8 bg-gradient-to-r from-orange-500 to-transparent rounded animate-[pulse_2s_infinite]"></div>
-                            <div class="h-0.5 w-6 bg-gradient-to-r from-purple-500 to-transparent rounded animate-[pulse_2.5s_infinite]"></div>
-                            <div class="h-0.5 w-8 bg-gradient-to-r from-pink-500 to-transparent rounded animate-[pulse_3s_infinite]"></div>
-                            <div class="h-0.5 w-5 bg-gradient-to-r from-blue-500 to-transparent rounded animate-[pulse_2s_infinite_0.5s]"></div>
+                        <div class="flex items-center gap-1 text-orange-400 font-bold text-xs tracking-widest">
+                            <span>→</span><span class="px-3 py-1 bg-orange-500/20 border border-orange-500/40 rounded-full">AiNy</span><span>✓</span>
                         </div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-xl">A</div>
                     </div>
                 </div>
-                <!-- Card body -->
                 <div class="p-6">
                     <div class="flex items-center gap-2 mb-4">
-                        <span class="tag tag-purple">Ecosystem</span>
-                        <span class="tag tag-pink">Product</span>
+                        <span class="tag tag-orange">Wellness</span>
+                        <span class="tag tag-purple">Digital Life</span>
                     </div>
                     <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
-                        Seamless Service Integration — Everything You Need in One Place
+                        Why Your Digital Life Feels Overwhelming — And How AiNy Fixes It
                     </h3>
                     <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                        Digital fragmentation is one of the biggest frustrations users face today. AiNy eliminates this by creating one interconnected flow — where chat, payment, and shopping data work together.
+                        The average user checks their phone 150 times a day. Yet despite all that technology, most people feel more overwhelmed, not less. Here's why — and how AiNy changes it.
                     </p>
                     <div class="flex items-center justify-between pt-4 border-t border-white/5">
                         <div class="flex items-center gap-2">
-                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-xs">A</div>
-                            <span class="text-slate-500 text-xs">Feb 2026 · 5 min read</span>
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">Mar 2026 · 5 min read</span>
+                        </div>
+                        <div class="card-arrow text-orange-400 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 — AiNyPay -->
+            <div class="blog-card reveal reveal-delay-2" onclick="openModal(2)">
+                <div class="relative h-48 bg-gradient-to-br from-purple-900/40 via-[#1e1e2e] to-pink-900/20 overflow-hidden flex items-center justify-center">
+                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">03</div>
+                    <div class="relative flex flex-col items-center gap-3">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-2xl shadow-xl shadow-purple-900/50">💳</div>
+                        <div class="flex items-center gap-3 text-xs">
+                            <span class="px-2 py-1 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 font-semibold">🔒 Secured</span>
+                            <span class="px-2 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-400 font-semibold">⚡ Instant</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="tag tag-purple">Payments</span>
+                        <span class="tag tag-pink">Security</span>
+                    </div>
+                    <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
+                        AiNyPay — Smarter, Safer, Seamless Payments
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                        Paying for something should take seconds. AiNyPay combines blockchain-backed security with seamless in-app checkout — so your money moves as fast as your life does.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">Apr 2026 · 4 min read</span>
                         </div>
                         <div class="card-arrow text-purple-400 transition-transform duration-300">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -396,43 +424,109 @@
                 </div>
             </div>
 
-            <!-- Blog Card 3 -->
-            <div class="blog-card reveal reveal-delay-2" onclick="openModal(2)">
-                <!-- Visual header -->
-                <div class="relative h-48 bg-gradient-to-br from-orange-900/30 via-[#1e1e2e] to-slate-900 overflow-hidden flex items-center justify-center">
-                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">03</div>
-                    <div class="relative flex items-center gap-6">
-                        <!-- Three pillars visual -->
-                        <div class="flex items-end gap-2">
-                            <div class="w-8 bg-gradient-to-t from-orange-500 to-orange-400 rounded-t-lg opacity-90" style="height:3rem"></div>
-                            <div class="w-8 bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-lg opacity-90" style="height:4.5rem"></div>
-                            <div class="w-8 bg-gradient-to-t from-pink-500 to-pink-400 rounded-t-lg opacity-90" style="height:3.5rem"></div>
+            <!-- Blog Card 4 — AiNyShop -->
+            <div class="blog-card reveal reveal-delay-3" onclick="openModal(3)">
+                <div class="relative h-48 bg-gradient-to-br from-orange-900/30 via-[#1e1e2e] to-purple-900/20 overflow-hidden flex items-center justify-center">
+                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">04</div>
+                    <div class="relative flex flex-col items-center gap-3">
+                        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center text-2xl shadow-xl shadow-orange-900/50">🛍️</div>
+                        <div class="flex gap-1">
+                            <div class="w-6 h-1.5 bg-orange-400 rounded-full animate-[pulse_1.8s_infinite]"></div>
+                            <div class="w-4 h-1.5 bg-yellow-400 rounded-full animate-[pulse_2.2s_infinite]"></div>
+                            <div class="w-5 h-1.5 bg-orange-300 rounded-full animate-[pulse_2s_infinite]"></div>
                         </div>
-                        <div class="text-left">
-                            <div class="text-xs text-orange-400 font-semibold mb-1">🧠 Intelligence</div>
-                            <div class="text-xs text-purple-400 font-semibold mb-1">🔒 Security</div>
-                            <div class="text-xs text-pink-400 font-semibold">🇹🇭 Localization</div>
-                        </div>
+                        <div class="text-xs text-orange-300 font-semibold tracking-wide">AI CURATED FOR YOU</div>
                     </div>
                 </div>
-                <!-- Card body -->
                 <div class="p-6">
                     <div class="flex items-center gap-2 mb-4">
-                        <span class="tag tag-orange">Thailand</span>
-                        <span class="tag tag-pink">Security</span>
+                        <span class="tag tag-orange">Shopping</span>
+                        <span class="tag tag-purple">AI</span>
                     </div>
                     <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
-                        Smart, Secure, and Personalized — The Future of Digital Experience in Thailand
+                        AiNyShop — Your Personal AI Shopping Assistant
                     </h3>
                     <p class="text-slate-400 text-sm leading-relaxed mb-5">
-                        Convenience alone is no longer enough. Thai digital users increasingly demand trust and personalization. AiNy's three core pillars — Intelligence, Security, and Localization — answer that call.
+                        Stop comparing prices across five apps. AiNyShop learns your taste, surfaces what you'll actually want, and handles checkout without ever leaving AiNy.
                     </p>
                     <div class="flex items-center justify-between pt-4 border-t border-white/5">
                         <div class="flex items-center gap-2">
-                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white font-bold text-xs">A</div>
-                            <span class="text-slate-500 text-xs">Feb 2026 · 4 min read</span>
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-yellow-500 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">May 2026 · 5 min read</span>
                         </div>
                         <div class="card-arrow text-orange-400 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 5 — AiNyChat -->
+            <div class="blog-card reveal reveal-delay-1" onclick="openModal(4)">
+                <div class="relative h-48 bg-gradient-to-br from-pink-900/40 via-[#1e1e2e] to-purple-900/20 overflow-hidden flex items-center justify-center">
+                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">05</div>
+                    <div class="relative flex flex-col items-center gap-3">
+                        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl shadow-xl shadow-pink-900/50">💬</div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="px-2 py-1 bg-pink-500/20 border border-pink-500/30 rounded-full text-pink-400 font-semibold">Thai NLP</span>
+                            <span class="px-2 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-400 font-semibold">Smart Hub</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="tag tag-pink">Communication</span>
+                        <span class="tag tag-purple">AI</span>
+                    </div>
+                    <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
+                        AiNyChat — Where Communication Becomes Intelligent
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                        Most messaging apps just carry words. AiNyChat understands them — bringing all your connections into one intelligent social hub that works in Thai, English, and everything in between.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">Jun 2026 · 4 min read</span>
+                        </div>
+                        <div class="card-arrow text-pink-400 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 6 — What's Next -->
+            <div class="blog-card reveal reveal-delay-2" onclick="openModal(5)">
+                <div class="relative h-48 bg-gradient-to-br from-purple-900/40 via-[#1e1e2e] to-orange-900/20 overflow-hidden flex items-center justify-center">
+                    <div class="issue-num opacity-30 text-6xl absolute bottom-0 right-4">06</div>
+                    <div class="relative flex flex-col items-center gap-3">
+                        <div class="relative">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-orange-500 rounded-2xl flex items-center justify-center text-2xl shadow-xl shadow-purple-900/50">🚀</div>
+                            <div class="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-black">+</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-purple-300 font-semibold tracking-widest uppercase">2026 & Beyond</div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="tag tag-orange">Future</span>
+                        <span class="tag tag-purple">Vision</span>
+                    </div>
+                    <h3 class="editorial text-xl font-bold text-white mb-3 leading-tight">
+                        What's Next for AiNy? The Future of Digital Services
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-5">
+                        AiNy launched with three services. What comes next is bigger — from AiNy Health and Travel to a global rollout. Here's where we're going and why it matters.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-orange-500 flex items-center justify-center text-white font-bold text-xs">A</div>
+                            <span class="text-slate-500 text-xs">Jul 2026 · 5 min read</span>
+                        </div>
+                        <div class="card-arrow text-purple-400 transition-transform duration-300">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                         </div>
                     </div>
@@ -514,50 +608,122 @@ const articles = [
         `
     },
     {
-        tag1: 'Ecosystem', tag1Class: 'tag-purple',
-        tag2: 'Product', tag2Class: 'tag-pink',
-        title: 'Seamless Service Integration — Everything You Need in One Place',
-        date: 'February 2026 · 5 min read',
+        tag1: 'Wellness', tag1Class: 'tag-orange',
+        tag2: 'Digital Life', tag2Class: 'tag-purple',
+        title: 'Why Your Digital Life Feels Overwhelming — And How AiNy Fixes It',
+        date: 'March 2026 · 5 min read',
         content: `
-            <p>Digital fragmentation is one of the biggest frustrations users face today. Messaging in one app, payments in another, shopping somewhere else — the constant switching reduces efficiency and productivity.</p>
-            <p><strong>AiNy eliminates this fragmentation.</strong></p>
-            <h3>One Platform, All Services</h3>
-            <p>With AiNy's integrated ecosystem, users can:</p>
+            <p>The average smartphone user has over 80 apps installed — and checks their phone more than 150 times a day. Yet despite all that technology, most people feel more overwhelmed, not less.</p>
+            <p><strong>Digital overload is real. And it is getting worse.</strong></p>
+            <h3>The Problem with Too Many Apps</h3>
+            <p>Every app you download adds a new notification stream, a new login, a new interface to learn, and a new tab to keep open in your mind. Messaging happens in one place. Payments in another. Shopping somewhere else. And somewhere in between, hours disappear.</p>
+            <p>Research consistently shows that app-switching is one of the biggest hidden productivity drains in modern life. Every context switch costs focus. Every unnecessary notification pulls you out of the present moment. Over time, this fragmentation builds into a background hum of low-level stress that most people have simply accepted as normal.</p>
+            <h3>It Does Not Have to Be This Way</h3>
+            <p>AiNy was built specifically to solve digital fragmentation — not by removing features, but by intelligently unifying them. Instead of forcing you to manage multiple apps, AiNy learns how you use technology and brings everything into one coherent experience.</p>
             <ul>
-                <li>Message friends and businesses</li>
-                <li>Make secure digital payments</li>
-                <li>Shop for products</li>
-                <li>Access lifestyle services</li>
-                <li>Manage daily tasks</li>
+                <li>One inbox for all your messages and service notifications</li>
+                <li>One payment flow for everything you buy, book, or transfer</li>
+                <li>One shopping experience that already knows your preferences</li>
+                <li>One AI that connects it all and learns as you go</li>
             </ul>
-            <p>All within a single platform.</p>
-            <h3>How the AI Connects Everything</h3>
-            <p>What makes AiNy different is not just the number of features, but how they work together. The AI system connects data across services to create smoother user journeys.</p>
-            <ul>
-                <li>A product discussed in chat can instantly appear in your shopping recommendations</li>
-                <li>A restaurant location shared in messages can link directly to booking or payment</li>
-                <li>Payment history can generate smart budgeting insights</li>
-            </ul>
-            <p>This interconnected experience improves convenience, speed, and overall satisfaction. AiNy transforms disconnected digital actions into one seamless flow.</p>
+            <h3>What Changes When You Switch to AiNy</h3>
+            <p>Users who consolidate their digital life into AiNy consistently report three changes: less time spent on their phone doing admin, fewer missed reminders and payments, and a genuine reduction in the low-level anxiety that comes from juggling multiple platforms.</p>
+            <p>Your digital life should feel like an extension of you — not a second job. AiNy gives you that simplicity back.</p>
         `
     },
     {
-        tag1: 'Thailand', tag1Class: 'tag-orange',
+        tag1: 'Payments', tag1Class: 'tag-purple',
         tag2: 'Security', tag2Class: 'tag-pink',
-        title: 'Smart, Secure, and Personalized — The Future of Digital Experience in Thailand',
-        date: 'February 2026 · 4 min read',
+        title: 'AiNyPay — Smarter, Safer, Seamless Payments',
+        date: 'March 2026 · 4 min read',
         content: `
-            <p>As digital adoption grows in Thailand, users are becoming more selective. Convenience alone is no longer enough — trust and personalization are equally important.</p>
-            <p><strong>AiNy was built with three core pillars.</strong></p>
-            <h3>🧠 1. Intelligence</h3>
-            <p>Advanced AI personalization ensures that every user receives relevant recommendations and customized features. The more you use AiNy, the more it understands your preferences, routines, and needs — delivering a digital experience that feels genuinely personal.</p>
-            <h3>🔒 2. Security</h3>
-            <p>AiNy prioritizes encrypted transactions and data protection. User privacy is at the center of our platform. We use 256-bit SSL encryption, Two-Factor Authentication, and are fully PDPA compliant. Your data is never sold to third parties — ever.</p>
-            <h3>🇹🇭 3. Localization</h3>
-            <p>AiNy is designed specifically for Thai digital behavior and lifestyle patterns. From payment preferences to communication styles, every element reflects local user needs. Our advanced NLP understands Thai nuances, code-switching between Thai and English, and regional slang naturally.</p>
-            <h3>Building a Smarter Ecosystem</h3>
-            <p>By combining AI-driven personalization with strong security and local understanding, AiNy positions itself differently from traditional super apps.</p>
-            <p>We are not just integrating services. <strong>We are creating a smarter digital ecosystem built around you.</strong></p>
+            <p>Paying for something should take seconds. Not app-switching, re-entering card details, waiting for SMS codes, and hoping the transaction went through. AiNyPay was designed to make every payment feel effortless — without compromising on security.</p>
+            <p><strong>Payments that work as fast as your life moves.</strong></p>
+            <h3>What Makes AiNyPay Different</h3>
+            <p>Most payment apps focus on the transaction itself. AiNyPay focuses on your entire financial context. Because AiNyPay is integrated with AiNyChat and AiNyShop, payments are not isolated events — they are part of a connected experience.</p>
+            <ul>
+                <li>Pay directly from a chat conversation without leaving the app</li>
+                <li>Split bills instantly with friends or family in your contacts</li>
+                <li>Receive AI-generated spending summaries at the end of each week</li>
+                <li>Set smart budgets that AiNy monitors automatically</li>
+            </ul>
+            <h3>Security You Can Actually Trust</h3>
+            <p>AiNyPay uses blockchain-backed transaction verification, ensuring that every payment is tamper-proof and fully traceable. All data is protected by 256-bit SSL encryption — the same standard used by international banks. Two-Factor Authentication is enabled by default, and AiNy's fraud detection AI monitors transaction patterns in real time, flagging anything unusual before it becomes a problem.</p>
+            <p>AiNyPay is fully PDPA compliant. Your financial data is never shared with third parties, never sold to advertisers, and never used for anything beyond improving your own experience.</p>
+            <h3>Payments Across Borders</h3>
+            <p>For users with family abroad or international transactions, AiNyPay supports cross-border transfers with transparent fees and real-time exchange rate information — no hidden charges, no surprise deductions. The security that protects your local payments protects your international ones too.</p>
+            <p>With AiNyPay, your money moves the way you do — quickly, safely, and without friction.</p>
+        `
+    },
+    {
+        tag1: 'Shopping', tag1Class: 'tag-orange',
+        tag2: 'AI', tag2Class: 'tag-purple',
+        title: 'AiNyShop — Your Personal AI Shopping Assistant',
+        date: 'April 2026 · 5 min read',
+        content: `
+            <p>Shopping online should save you time. But between comparing prices across five different platforms, reading contradictory reviews, and second-guessing whether a product is actually worth it — most people spend more time shopping than they ever intended.</p>
+            <p><strong>AiNyShop changes the equation entirely.</strong></p>
+            <h3>An Assistant That Knows Your Taste</h3>
+            <p>AiNyShop is not a marketplace you browse — it is a personal shopping assistant that learns what matters to you. From the first time you use it, AiNyShop pays attention: what you search for, what you buy, what you skip, and what you come back to. Over time, it builds a precise picture of your preferences and uses that to surface products you will actually want, before you even go looking for them.</p>
+            <ul>
+                <li>AI-curated product feeds based on your purchase history and browsing behaviour</li>
+                <li>Quality comparisons that highlight the best option across local and international brands</li>
+                <li>Smart price alerts when something on your wishlist drops in value</li>
+                <li>Budget-aware recommendations that respect your spending limits</li>
+            </ul>
+            <h3>Seamless From Discovery to Delivery</h3>
+            <p>Because AiNyShop is integrated with AiNyPay and AiNyChat, the entire journey from discovering a product to paying for it happens inside one app. See something a friend recommends in AiNyChat? It appears in your AiNyShop feed. Ready to buy? AiNyPay handles checkout in two taps. No redirects, no re-entering details, no logging into a separate platform.</p>
+            <h3>Supporting Local and Global Brands</h3>
+            <p>AiNyShop features both local brands and international retailers, giving users access to the full range of options without needing multiple apps. For users who care about quality over price alone, AiNy's product intelligence highlights verified reviews, authenticity signals, and trusted seller ratings — so you always know what you are getting.</p>
+            <p>Shopping should feel good. With AiNyShop, it finally does.</p>
+        `
+    },
+    {
+        tag1: 'Communication', tag1Class: 'tag-pink',
+        tag2: 'AI', tag2Class: 'tag-purple',
+        title: 'AiNyChat — Where Communication Becomes Intelligent',
+        date: 'April 2026 · 4 min read',
+        content: `
+            <p>We spend more time communicating digitally than ever before. And yet, most messaging apps have not fundamentally changed in over a decade. They deliver messages. They show you who is online. They let you send photos. But they do not actually help you communicate better — they just carry the words.</p>
+            <p><strong>AiNyChat was built to be the first messaging experience with genuine intelligence built in.</strong></p>
+            <h3>A Social Hub, Not Just a Messenger</h3>
+            <p>AiNyChat brings together your personal contacts, business communications, and community connections in one unified inbox. No more switching between five different apps to manage your social and professional life. Everything flows through one intelligent space that learns to prioritise what matters most to you.</p>
+            <ul>
+                <li>Smart message prioritisation — urgent messages surface automatically</li>
+                <li>AI-powered reply suggestions that match your communication style</li>
+                <li>Context-aware reminders triggered by conversations ("I'll send that Monday" becomes an actual reminder)</li>
+                <li>Seamless group management for families, teams, and communities</li>
+            </ul>
+            <h3>Thai Language, Naturally</h3>
+            <p>AiNyChat's Natural Language Processing was specifically trained on Thai language patterns, including informal speech, regional dialect, and the Thai-English code-switching that characterises how younger Thai users actually communicate. Voice messages are transcribed accurately in both languages. Searches work in Thai without needing to switch keyboards or translate your query.</p>
+            <h3>Communication That Connects to Everything</h3>
+            <p>Because AiNyChat is part of the AiNy ecosystem, conversations do not exist in a silo. A product mentioned in chat can immediately become a shopping recommendation. A payment request sent in a message can be completed without leaving the conversation. Plans made in chat can automatically populate your calendar.</p>
+            <p>AiNyChat is not just how you talk to people. It is how your entire digital life stays connected.</p>
+        `
+    },
+    {
+        tag1: 'Future', tag1Class: 'tag-orange',
+        tag2: 'Vision', tag2Class: 'tag-purple',
+        title: "What's Next for AiNy? The Future of Digital Services",
+        date: 'Aug 2026 · 5 min read',
+        content: `
+            <p>AiNy launched with a simple belief: that technology should simplify life, not complicate it. In the months since launch, that belief has been validated by every user who told us they finally deleted the five other apps they no longer needed.</p>
+            <p><strong>But we are only just getting started.</strong></p>
+            <h3>Expanding the Ecosystem</h3>
+            <p>The current AiNy platform — AiNyChat, AiNyPay, and AiNyShop — represents the foundation of what we are building. In the months ahead, the ecosystem will expand to include new service categories designed around the moments in your day that still feel unnecessarily complicated.</p>
+            <ul>
+                <li><strong>AiNy Health</strong> — intelligent wellness tracking integrated with local healthcare providers, appointment booking, and medication reminders</li>
+                <li><strong>AiNy Travel</strong> — end-to-end trip planning, local transport booking, and real-time navigation with cultural context</li>
+                <li><strong>AiNy Business</strong> — tools for small business owners to manage orders, payments, and customer communication in one place</li>
+            </ul>
+            <h3>Smarter AI, Every Update</h3>
+            <p>Every new user makes AiNy smarter. Our AI models are continuously updated based on aggregated, anonymised usage patterns — learning what kinds of recommendations are genuinely helpful, which features are most used together, and where friction still exists in the user experience. Each update makes the personalisation more precise and the experience more seamless.</p>
+            <h3>Going Global</h3>
+            <p>AiNy was built to understand how people actually live — and that understanding is not limited to one country. Our AI architecture is designed to adapt to new languages, cultural contexts, and local service ecosystems. In 2026 and beyond, AiNy will begin expanding beyond its initial market, bringing the same integrated, intelligent experience to users across Southeast Asia and beyond.</p>
+            <h3>The Vision Stays the Same</h3>
+            <p>No matter how large the ecosystem grows, the mission remains unchanged: to be the one app that genuinely makes your daily life easier. Every feature we build, every market we enter, and every partnership we form will be measured against that single standard.</p>
+            <p>The future of digital services is not more apps. It is one AI that understands you well enough to make all the others unnecessary.</p>
+            <p><strong>That is AiNy. And we are just getting started.</strong></p>
         `
     }
 ];
